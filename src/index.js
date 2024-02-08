@@ -225,8 +225,22 @@ civ.getSWR().then(swr => {
 	const value = swr.slice(1);
 });
 
-//setInterval(() => {
-	//civ.getFrequency().then(frequency => {
-		//civ.setFrequency(frequency + 1000);
-	//});
-//}, 1000);
+const sweep = () => {
+	return civ.getFrequency().then(frequency => {
+		civ.setFrequency(frequency + 1000).then(() => {
+			civ.transmit().then(() => {
+				setTimeout(() => {
+					civ.getSWR().then(swr => {
+						console.log(swr);
+						civ.endTransmit().then(() => {
+							sweep();
+						});
+					});
+				}, 10);
+			});
+		});
+	});
+};
+
+civ.endTransmit();
+//sweep();

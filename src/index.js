@@ -60,6 +60,14 @@ module.exports = (serialport) => {
 
 		getSWR: () => {
 			return civ.run("1512");
+		},
+
+		getSql: () => {
+			return civ.run("1501");
+		},
+
+		getToneSql: () => {
+			return civ.run("1505");
 		}
 	};
 

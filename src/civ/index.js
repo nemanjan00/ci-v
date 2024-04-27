@@ -75,8 +75,19 @@ module.exports = (serialport) => {
 				response[0] != 0xFE ||
 				response[1] != 0xFE ||
 				response[2] != civ.computerAddress[0] ||
-				response[3] != civ.radioAddress[0]
+				response[3] != civ.radioAddress[0] ||
+				civ._task === undefined
 			) {
+				return civ._detectMessages();
+			}
+
+			const responseCommand = response.slice(4, 4 + civ._task.command.length);
+
+			if(responseCommand.equals(Buffer.from("2700", "hex"))) {
+				civ._events.emit("waveform", response);
+			}
+
+			if(responseCommand.equals(civ._task.command) === false && responseCommand[0] != 0xFB) {
 				return civ._detectMessages();
 			}
 
@@ -84,7 +95,7 @@ module.exports = (serialport) => {
 
 			const callResult = response.slice(5, response.length - 1);
 
-			if(status == 0xFB || status == civ._task.command[0]) {
+			if(status == 0xFB || (civ._task && status == civ._task.command[0])) {
 				civ._task.resolve(callResult);
 			} else {
 				civ._task.reject(callResult);

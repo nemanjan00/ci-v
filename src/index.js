@@ -73,7 +73,21 @@ module.exports = (serialport) => {
 				return sql[1] == 1;
 			});
 ;
-		}
+		},
+
+		getWaveformData: () => {
+			return civ.run("2700");
+		},
+
+		setWaveformDataOut: (enable) => {
+			if(enable) {
+				return civ.run("271101");
+			}
+
+			return civ.run("271100");
+		},
+
+		on: civ.on
 	};
 
 	return commands;

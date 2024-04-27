@@ -32,12 +32,25 @@ const channels = [
 
 let counter = 0;
 
-let interval = setInterval(() => {
+const loop = () => {
 	const freq = channels[counter];
-
-	civ.setFrequency(freq);
-
 	counter = (counter + 1) % channels.length;
-}, 10);
 
-console.log(interval);
+	return civ.setFrequency(freq).then(() => {
+		setTimeout(() => {
+			return civ.getSql().then(sql => {
+				if(sql) {
+					console.log(`Stopping on ${freq / Mhz}`);
+
+					return setTimeout(() => {
+						loop();
+					}, 5000);
+				}
+
+				loop();
+			});
+		}, 300);
+	});
+};
+
+loop();

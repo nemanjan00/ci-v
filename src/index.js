@@ -63,11 +63,17 @@ module.exports = (serialport) => {
 		},
 
 		getSql: () => {
-			return civ.run("1501");
+			return civ.run("1501").then(sql => {
+				console.log(sql);
+				return sql[1] == 1;
+			});
 		},
 
 		getToneSql: () => {
-			return civ.run("1505");
+			return civ.run("1505").then(sql => {
+				return sql[1] == 1;
+			});
+;
 		}
 	};
 

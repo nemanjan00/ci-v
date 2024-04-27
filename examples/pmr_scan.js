@@ -39,6 +39,7 @@ const loop = () => {
 	return civ.setFrequency(freq).then(() => {
 		setTimeout(() => {
 			return civ.getSql().then(sql => {
+				console.log(sql);
 				if(sql) {
 					console.log(`Stopping on ${freq / Mhz}`);
 
@@ -49,7 +50,7 @@ const loop = () => {
 
 				loop();
 			});
-		}, 300);
+		}, 500);
 	});
 };
 

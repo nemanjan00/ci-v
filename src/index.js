@@ -64,7 +64,6 @@ module.exports = (serialport) => {
 
 		getSql: () => {
 			return civ.run("1501").then(sql => {
-				console.log(sql);
 				return sql[1] == 1;
 			});
 		},

@@ -1,20 +1,20 @@
-# ci-v
+# icom-ci-v
 
 Icom CI-V control library in JS (tested against IC-705).
 
 ## Install
 
 ```bash
-yarn add ci-v
+yarn add icom-ci-v
 ```
 
 ## Usage
 
-`ci-v` takes any serialport-like object (`write()`, `on("data")`, `opening`):
+`icom-ci-v` takes any serialport-like object (`write()`, `on("data")`, `opening`):
 
 ```javascript
 const SerialPort = require("serialport").SerialPort;
-const CIV = require("ci-v");
+const CIV = require("icom-ci-v");
 
 const radio = CIV(new SerialPort({ path: "/dev/ttyACM0", baudRate: 115200 }));
 

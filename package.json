@@ -1,5 +1,5 @@
 {
-  "name": "ci-v",
+  "name": "icom-ci-v",
   "version": "0.0.1",
   "description": "Icom CI-V radio control library (frequency, PTT, SWR, scope waveform)",
   "main": "src/index.js",

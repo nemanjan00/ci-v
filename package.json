@@ -6,7 +6,10 @@
   "files": [
     "src"
   ],
-  "repository": "git@github.com:nemanjan00/ci-v.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nemanjan00/ci-v.git"
+  },
   "author": "Nemanja Nedeljkovic <nemanjan00@gmail.com>",
   "license": "UNLICENSED",
   "keywords": [

@@ -1,5 +1,23 @@
 {
-  "dependencies": {
+  "name": "ci-v",
+  "version": "0.0.1",
+  "description": "Icom CI-V radio control library (frequency, PTT, SWR, scope waveform)",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "repository": "git@github.com:nemanjan00/ci-v.git",
+  "author": "Nemanja Nedeljkovic <nemanjan00@gmail.com>",
+  "license": "UNLICENSED",
+  "keywords": [
+    "icom",
+    "ci-v",
+    "civ",
+    "ham",
+    "radio",
+    "ic-705"
+  ],
+  "devDependencies": {
     "serialport": "^12.0.0"
   }
 }
